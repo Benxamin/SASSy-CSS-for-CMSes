@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+<html>
+  <head>
+    <title>SASSy CSS for CMSes</title>
+    <meta charset='utf-8'>
+    <script src='js/slides.js'></script>
+  </head>
+  
+  <body style='display: none'>
+    <section id="bg" class='slides layout-regular template-default'>
+        
+      
+      <article class='biglogo'></article>
+
+      <article class="title">
+        <h1>
+          SASSy CSS for CMSes
+        </h1>
+        <p class="footer">
+            <strong>Benjamin Bertrand</strong><br>
+            Front-end Developer, Blend Interactive, Inc.<br>
+            South Dakota Code Camp, November 11, 2011
+        </p>
+      </article>
+
+      <article class="segue">
+        <h2>Why are you here?</h2>
+      </article>
+
+      <article class="ex">
+          <h3>CSS is Terrible</h3>
+          <ul class="build">
+              <li>Repetitive</li>
+              <li>Incomplete</li>
+              <li>Limited</li>
+              <li>Browsers are inconsistent</li>
+          </ul>
+          <img src="images/wrench-driver.png" />
+          <div class="src">Source: clker.com</div>
+      </article>
+
+      <article>
+          <h3>SASS Extends CSS</h3>
+          <ul class="build">
+              <li>Variables!</li>
+              <li>Functions!</li>
+              <li>Re-usable code!</li>
+          </ul>
+      </article>
+
+      <article class="segue">
+          <h2>Where did SASS come from?</h2>
+      </article>
+      
+      <article class="ex">
+          <h3>Nathan Weizenbaum</h3>
+          <ul class="build">
+              <li>Seattle, WA</li>
+              <li>BAs in Computer Science &amp; <br>Philosophy</li>
+              <li>HAML contributor</li>
+              <li>Create an aesthetic <br>improvement for CSS</li>
+          </ul>
+          <img src="images/Nathan-Weizenbaum.png" />
+          <div class="src">Source: @nex3</div>
+      </article>
+
+      <article>
+          <h3>Get started with SASS</h3>
+          <ul class="build">
+            <li>SASS is a Ruby Gem</li>
+          </ul>
+          <section>
+            <pre class="prettyprint build">
+<code>$ sudo gem install sass</code>
+<code>$ mv style.css style.scss</code>
+<code>$ sass --watch style.scss:style.css</code>
+            </pre>
+          </section>
+      </article>
+
+      <article>
+        <h3>How SASS Works</h3>
+        <ul>
+          <li>UNIX commands</li>
+          <li>Requires a compiler</li>
+          <li>Imports <b>.sass</b>, <b>.scss</b>, <b>.css</b>, <b>.less</b></li>
+          <li>Converts to a tree structure</li>
+          <li>Outputs to <b>.css</b></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>What SASS looks like</h3>
+          <section class="build">
+            <pre class="prettyprint">
+<span class="com">/* TABLES ============================= */</span>
+<span class="com">//Grid View Tables</span>
+<span class="sel">table.grid</span>
+    <span class="attr">font-size</span>: <span class="val">1.0833em</span>
+    <span class="attr">line-height</span>: <span class="val">1em</span>
+    <span class="kwd">th</span>
+        <span class="attr">background</span>: <span class="val">#d9d9d9</span>
+        <span class="attr">color</span>: <span class="var">$medgray</span>
+        <span class="attr">font</span>: <span class="val">regular 1.333/1</span> <span class="var">$narrowbold</span>
+        <span class="attr">text-transform</span>: uppercase
+        <span class="sel">a</span>
+            <span class="var">$up</span>: <span class="val">right 5px</span>
+            <span class="var">$down</span>: <span class="val">right -86px</span>
+            <span class="attr">color</span>: <span class="var">$medgray</span>
+            <span class="inc-b">@include</span> <span class="inc">round-corners(4px)</span>
+            <span class="sel">&:focus</span>,<span class="sel">&:hover</span>
+                <span class="attr">background</span>: <span class="val">#fff url(<span class="str">../images/grid-arrows.png</span>) no-repeat</span> <span class="var">$down</span>
+
+            </pre>
+          </section>
+
+        <p>
+        </p>
+      </article>
+
+    <article>
+      <h3>CSS Extentions</h3>
+      <ul>
+        <li>Nested Selectors</li>
+        <li>Parent References</li>
+        <li>Nested Properties</li>
+      </ul>      
+    </article>
+      
+      <article class="segue">
+        <h2>Examples</h2>
+      </article> 
+      
+      <article class="ex">
+        <h3>SASS Syntax</h3>
+        <h4>.sass</h4>
+        <ul>
+          <li>HAML-like:</li>
+          <li>Whitespace aware</li>
+          <li>No extraneous punctuation</li>
+        </ul>
+        <img src="images/syntax-sass.png" />
+        <div class="src">1 of 2</div>
+      </article>
+
+      <article class="ex">
+        <h3>SASS Syntax</h3>
+        <h4>.scss</h4>
+        <ul>
+          <li>CSS-like</li>
+          <li>Nested rules</li>
+        </ul>
+        <img src="images/syntax-scss.png" />
+        <div class="src">2 of 2</div>        
+      </article>
+
+      <article>
+        <h3>Compiling SASS</h3>
+        <section class="prettify build">
+          <h4>From root to specific file paths:</h4>
+          <pre><code>$ sass --watch path/to/sass/styles.sass:path/to/css/styles.css</code></pre>
+          <h4>From assets to css subfolder:</h4>
+          <pre><code>$ sass --watch sass/:css/</code></pre>
+          <h4>In the css folder:</h4>
+          <pre><code class="build">$ sass --watch *</code></pre>
+      </article>
+
+      <article>
+        <h3>SASS Comments</h3>
+        <section class="prettify build">
+          <pre class="build">
+<span class="com">/* This is a permanent comment. */</span>
+<span class="com">/* It can be multiple lines, 
+  but it must be consistently indented! */</span>
+          </pre>
+          <pre class="build">
+<span class="com">//These comment is for SASS authors.</span>
+<span class="com">//They will be skipped.</span>
+          </pre>
+      </article>
+
+      <article>
+        <h3>Variables</h3>
+        <section class="build">
+          <pre class="build"><span class="com">$var: value</span></pre>
+          <pre class="build">
+  <span><code class="com">// Colors</code>
+  $green:     #819c31
+  $navy:      #012a37
+  $orange:    #ed8000</span>
+  <span><code class="com">// Links</code>
+  $link: $green
+  $focus: #77bdd1
+  $hover: #70c1da 
+  $visited: #408295</span>
+  <span><code class="com">// Fonts</code>
+  $heading: 'CopseRegular',Archer,'Gill Sans',Georgia,sans-serif
+  $copy: 'PTSansRegular','Trebuchet MS',Calibri,'Gill Sans',sans-serif
+  $bold: 'PTSansBold','Trebuchet MS',Calibri,'Gill Sans',sans-serif
+  $italic: 'PTSansItalic','Trebuchet MS',Calibri,'Gill Sans',sans-serif</span>
+          </pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>Datatypes</h3>
+        <ul>
+          <li>Numbers &nbsp;&nbsp;&nbsp;<code class="black">$n: <b>1024</b> / <b>768</b></code></li>
+          <li>Strings &nbsp;&nbsp;&nbsp;<code class="black">$sans: <b>"Helvetica Neue"</b></code></li>
+          <li>Colors &nbsp;&nbsp;&nbsp;<code class="black">$hover: <b>rgba(124, 252, 0, 0.55)</b></code></li>
+          <li>Booleans &nbsp;&nbsp;&nbsp;<code class="black">$MOBILE: <b>false</b></code></li>
+          <li>Lists (of values) &nbsp;&nbsp;&nbsp;<code class="black">$vendors: <b>moz</b>, <b>wekbit</b>, <b>o</b>, <b>ms</b></code></li></li>
+        </ul>        
+      </article>
+
+      <article>
+        <h3>SASS Mixins</h3>
+        <ul>
+          <li>Provides Functions to CSS</li>
+          <li>DRY</li>
+          <li>Extract Repeated Code</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>SASS Mixin Syntax</h3>
+        <section class="build">
+          <pre>
+<b>@mixin clearfix</b>()
+  overflow: auto
+  overflow: -moz-scrollbars-none
+  <span class="com">// This makes ie6 get layout</span>
+  display: inline-block
+  <span class="com">// and this puts it back to block</span>
+  &amp;
+    display: block</pre>
+          <pre>
+.clearfix
+  <b>@include clearfix()</b></pre>
+        </section>        
+      </article>
+      
+      <article>
+        <h3>SASS Mixin Syntax</h3>
+        <section class="build">
+          <pre>
+<b>=clearfix</b>
+  overflow: auto
+  overflow: -moz-scrollbars-none
+  <span class="com">// This makes ie6 get layout</span>
+  display: inline-block
+  <span class="com">// and this puts it back to block</span>
+  &amp;
+    display: block</pre>
+          <pre>
+.clearfix
+  <b>+clearfix</b></pre>
+        </section>        
+      </article>
+
+      <article>
+        <h3>SASS Mixin Syntax</h3>
+        <section class="build">
+          <pre>
+<b class="blue">$vendors</b>: moz, wekbit, o, ms
+<b>=rotate($deg: 90)</b>
+    <b>@each</b> <b class="blue">$v</b> in <b class="blue">$vendors</b>
+        <b>#{</b>-<b>#{$v}</b>-transform<b>}</b>: rotate(<b>#{$deg}</b>deg)</pre>
+        <pre>
+.test
+    <b>+rotate(22)</b></pre>
+
+          <pre>
+.test {
+  -<b>moz</b>-transform: rotate(<b>22</b>deg);
+  -<b>wekbit</b>-transform: rotate<b>22</b>deg;
+  -<b>o</b>-transform: rotate(<b>22</b>deg);
+  -<b>ms</b>-transform: rotate(<b>22</b>deg); }</pre>
+        </section>        
+      </article>
+
+      <article>
+        <h3>String Interpolation</h3>
+        <section class="build">
+          <pre><b class="black">#{$var}</b></pre>
+          <pre>
+h1
+    EditMenuTitle: Headings
+    EditMenuName: Heading 1
+$i: 6
+@for $i from 2 through 6
+    h<b class="black">#{$i}</b>
+        EditMenuName: Heading $i
+          </pre>
+        </section>
+        <div class="src">1 of 2</div>
+      </article>
+            
+      <article>
+        <h3>String Interpolation</h3>
+        <section class="build">
+          <pre>
+<b class="blue">@mixin</b> <span class="blue">vertical-gradient($startcolor, $stopcolor)</span>
+  <span class="com">// default bgcolor - averages colors</span>
+  background-color: <b>mix(</b>$startcolor, $stopcolor<b>)</b>
+  <span class="com">// Firefox 3.6+</span>
+  background-image: -moz-linear-gradient(top, $startcolor, $stopcolor)
+  <span class="com">// Safari 4+, Chrome 1+</span>
+  background-image: -webkit-gradient(linear, left top, left bottom, from($startcolor), to($stopcolor))
+  <span class="com">// Safari 5.1+, Chrome 10+</span>
+  background-image: -webkit-linear-gradient($startcolor, $stopcolor)
+  <span class="com">// Opera 11.10+</span>
+  background-image: -o-linear-gradient($startcolor, $stopcolor)
+  <span class="com">// IE 9</span>
+  background-image: -ms-linear-gradient(left bottom, $startcolor, $stopcolor)
+  <span class="com">// IE 6+</span>
+  filter: progid:DXImageTransform.Microsoft.gradient(
+          GradientType=0,StartColorStr=<b>#{$startcolor}</b>, 
+          EndColorStr=<b>#{$stopcolor}</b>)
+</pre>
+        </section>
+        <div class="src">2 of 2</div>
+      </article>
+
+      <article class="ex">
+        <h3>SASS Output</h3>
+        <h4>Four styles:</h4>
+        <ul class="build">
+          <li><strong>:expanded</strong>
+            <img src="images/output-expanded.png" />
+          </li>
+          <li><strong>:nested</strong>
+            <img src="images/output-nested.png" />
+          </li>
+          <li><strong>:compact</strong>
+            <img src="images/output-compact.png" />
+          </li>
+          <li><strong>:compressed</strong>
+            <img src="images/output-compressed.png" />
+          </li>
+        </ul>
+      </article>
+
+      <article class="segue">
+        <h2>Questions?</h2>
+      </article>
+
+      <article class="segue">
+        <h2>And now for some CSS...</h2>
+      </article>
+
+      <article class="ex">
+        <h3>Stages of CMS CSS</h3>
+        <ol class="build">
+          <li>Reset
+            <img src="images/site.jpg" />
+          </li>
+          <li>Surround
+            <img src="images/site-surround.jpg" />
+          </li>
+          <li>Content
+            <img src="images/site-content.jpg" />
+          </li>
+          <li>Print
+            <img src="images/site-content.jpg" />
+          </li>
+        </ol>
+      </article>
+
+      <article>
+        <h3>SMACSS</h3>
+        <h4>Scalable and Modular Architecture for CSS</h4>
+        <ol>
+          <li>Base</li>
+          <li>Layout</li>
+          <li>Module</li>
+          <li>State</li>
+        </ol>
+        <div class="src">Source: @snookca</div>
+      </article>
+
+      <article>
+        <img src="images/venn-1.png"/>
+      </article>
+      
+      <article>
+        <img src="images/venn-2.png" />
+      </article>
+      
+      <article>
+        <h3>Component Styles</h3>
+        <section><pre>
+1 ROOT
+2 HEADINGS
+3 TYPOGRAPHY
+4 LINKS
+5 FIGURES & IMAGES
+6 TABLES
+7 FORMS
+8 BANNER
+9 NAVIGATION
+10 CONTENT
+11 MAIN
+12 COMPLEMENTARY
+13 CONTENTINFO
+14 GLOBAL OBJECTS
+15 VENDOR-SPECIFIC
+16 MODERNIZR
+17 TEMPLATE SPECIFICS</pre>
+          <div  class="src">Source: @malarkey</div>
+        </section>        
+      </article>
+
+      <article>
+        <h3>Responsive CSS</h3>
+        <section>
+          <pre class="">
+<code>320.css</code>
+<code>480.css</code>
+<code>768.css</code>
+<code>850.css</code>
+<code>1024.css</code>
+<code>styles.css</code>
+<code>editor.css</code>
+<code>print.css</code>
+          </pre>
+        </section>
+      </article>
+
+      <article>
+        <h3>Include Multiple Stylesheets</h3>
+        <ol class="build">
+          <li>Break-out your stylesheets</li>
+          <li>Prefix with underscore "_"</li>
+          <li>Add your <b>main.css</b></li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>@include</b> "reset.css"</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>@include</b> "layout.css"</li>
+          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>@include</b> "mobile.css"</li>
+        </ol>
+      </article> 
+      
+      <article class="segue">
+        <h2>References</h2>
+        <ul>
+          <li>SASS Reference<br>
+            <a href="http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html">http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html</a>
+          </li>
+          <li>Scalable and Modular Architecture for CSS<br>
+            <a href="http://smacss.com/book/fourtypes">http://smacss.com/book/fourtypes</a>
+          </li>
+          <li>320 and up<br>
+            <a href="https://github.com/malarkey/320andup/">320 and up on github</a><br>
+            <a href="http://www.stuffandnonsense.co.uk/projects/320andup/">320 and up homepage</a>
+          </li>
+        </ul>
+      </article>
+            
+      <article class="segue smaller">
+        <h2>Thank you!</h2>
+        <ul>
+          <li><a href='http://www.nowdirection.com'>nowdirection.com</a></li>
+          <li><a href='http://twitter.com/#!/benxamin'>@benxamin</a></li>
+        </ul>
+      </article>
+
+    </section>
+
+  </body>
+</html>
